@@ -1,1 +1,55 @@
-<p>users-list works!</p>
+<section class="users-page">
+  <h1 class="users-page__title">Users</h1>
+  <button nz-button nzType="primary" class="users-page__create-button" (click)="goToCreateUser()">
+    Create user
+  </button>
+  <div class="users-page__search-panel">
+    <input
+      nz-input
+      class="users-page__search"
+      placeholder="Search by name or email"
+      [(ngModel)]="searchInput"
+      (keyup.enter)="applySearch()"
+    />
+
+    <button nz-button nzType="primary" (click)="applySearch()">Search</button>
+
+    <button nz-button nzType="default" (click)="resetSearch()">Reset</button>
+  </div>
+  @if (errorMessage) {
+    <p class="users-page__error">{{ errorMessage }}</p>
+  }
+  <nz-table #userTable [nzData]="filteredUsers" [nzLoading]="isLoading" [nzPageSize]="5">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Website</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (user of userTable.data; track user.id) {
+        <tr class="users-page__row" (click)="goToUserDetails(user.id)">
+          <td>{{ user.name }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.phone }}</td>
+          <td>{{ user.website }}</td>
+          <td>
+            <button
+              nz-button
+              nzType="primary"
+              nzDanger
+              (click)="deleteUser(user.id); $event.stopPropagation()"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </nz-table>
+</section>

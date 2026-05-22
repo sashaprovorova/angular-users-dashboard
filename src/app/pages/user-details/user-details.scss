@@ -1,0 +1,13 @@
+.user-details {
+  padding: 2rem;
+  margin: 0 auto;
+
+  &__card {
+    margin-top: 1.5rem;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 1rem;
+  }
+}

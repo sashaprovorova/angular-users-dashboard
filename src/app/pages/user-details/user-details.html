@@ -1,1 +1,31 @@
-<p>user-details works!</p>
+<section class="user-details">
+  <div class="user-details__actions">
+    <button nz-button nzType="default" (click)="goBack()">Back to list</button>
+    <button nz-button nzType="primary" (click)="goToEditUser()">Edit user</button>
+  </div>
+
+  @if (user) {
+    <nz-card class="user-details__card" [nzTitle]="user.name">
+      <p><strong>Username:</strong> {{ user.username }}</p>
+      <p><strong>Email:</strong> {{ user.email }}</p>
+      <p><strong>Phone:</strong> {{ user.phone }}</p>
+      <p><strong>Website:</strong> {{ user.website }}</p>
+
+      <p>
+        <strong>Address:</strong>
+        {{ user.address.city }}, {{ user.address.street }},
+        {{ user.address.suite }}
+      </p>
+
+      <p>
+        <strong>Company:</strong>
+        {{ user.company.name }}
+      </p>
+
+      <p>
+        <strong>Catch phrase:</strong>
+        {{ user.company.catchPhrase }}
+      </p>
+    </nz-card>
+  }
+</section>

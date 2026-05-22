@@ -1,0 +1,31 @@
+.users-page {
+  padding: 2rem;
+  margin: 0 auto;
+
+  &__title {
+    margin-bottom: 1.5rem;
+  }
+
+  &__create-button,
+  &__search {
+    margin-bottom: 1.5rem;
+  }
+
+  &__search-panel {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  &__search {
+    max-width: 24rem;
+  }
+  &__row {
+    cursor: pointer;
+  }
+
+  &__error {
+    color: #ff4d4f;
+    margin-bottom: 1rem;
+  }
+}

@@ -1,1 +1,44 @@
-<p>user-form works!</p>
+<section class="user-form">
+  <nz-card [nzTitle]="isEditMode ? 'Edit user' : 'Create user'">
+    <form nz-form [formGroup]="form" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <nz-form-label nzRequired>Name</nz-form-label>
+        <nz-form-control nzErrorTip="Name is required">
+          <input nz-input formControlName="name" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label nzRequired>Username</nz-form-label>
+        <nz-form-control nzErrorTip="Username is required">
+          <input nz-input formControlName="username" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label nzRequired>Email</nz-form-label>
+        <nz-form-control nzErrorTip="Enter valid email">
+          <input nz-input formControlName="email" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label nzRequired>Phone</nz-form-label>
+        <nz-form-control nzErrorTip="Phone is required">
+          <input nz-input formControlName="phone" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label nzRequired>Website</nz-form-label>
+        <nz-form-control nzErrorTip="Website is required">
+          <input nz-input formControlName="website" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <button nz-button nzType="primary" htmlType="submit">
+        {{ isEditMode ? 'Save changes' : 'Create user' }}
+      </button>
+    </form>
+  </nz-card>
+</section>
