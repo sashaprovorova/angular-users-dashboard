@@ -1,8 +1,18 @@
 <section class="user-details">
   <div class="user-details__actions">
     <button nz-button nzType="default" (click)="goBack()">Back to list</button>
-    <button nz-button nzType="primary" (click)="goToEditUser()">Edit user</button>
+    <button nz-button nzType="primary" (click)="goToEditUser()" [disabled]="!user">
+      Edit user
+    </button>
   </div>
+
+  @if (isLoading) {
+    <p class="user-details__status">Loading user...</p>
+  }
+
+  @if (errorMessage) {
+    <p class="user-details__error">{{ errorMessage }}</p>
+  }
 
   @if (user) {
     <nz-card class="user-details__card" [nzTitle]="user.name">

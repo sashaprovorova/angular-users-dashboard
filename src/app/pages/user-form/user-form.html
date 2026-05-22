@@ -36,6 +36,10 @@
         </nz-form-control>
       </nz-form-item>
 
+      @if (errorMessage) {
+        <p class="user-form__error">{{ errorMessage }}</p>
+      }
+
       <button nz-button nzType="primary" htmlType="submit">
         {{ isEditMode ? 'Save changes' : 'Create user' }}
       </button>

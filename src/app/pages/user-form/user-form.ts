@@ -22,6 +22,7 @@ export class UserForm implements OnInit {
 
   isEditMode = false;
   userId: number | null = null;
+  errorMessage = '';
 
   form = this.formBuilder.nonNullable.group({
     name: ['', Validators.required],
@@ -63,6 +64,7 @@ export class UserForm implements OnInit {
       this.form.markAllAsTouched();
       return;
     }
+    this.errorMessage = '';
 
     const formValue = this.form.getRawValue();
 
@@ -91,14 +93,24 @@ export class UserForm implements OnInit {
     };
 
     if (this.isEditMode && this.userId) {
-      this.userService.updateUser(this.userId, userPayload).subscribe(() => {
-        this.router.navigate(['/users']);
+      this.userService.updateUser(this.userId, userPayload).subscribe({
+        next: () => {
+          this.router.navigate(['/users']);
+        },
+        error: () => {
+          this.errorMessage = 'Failed to update user';
+        },
       });
       return;
     }
 
-    this.userService.createUser(userPayload).subscribe(() => {
-      this.router.navigate(['/users']);
+    this.userService.createUser(userPayload).subscribe({
+      next: () => {
+        this.router.navigate(['/users']);
+      },
+      error: () => {
+        this.errorMessage = 'Failed to create user';
+      },
     });
   }
 }

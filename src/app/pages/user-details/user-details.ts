@@ -18,6 +18,7 @@ export class UserDetails implements OnInit {
 
   user: User | null = null;
   isLoading = false;
+  errorMessage = '';
 
   ngOnInit(): void {
     this.loadUser();
@@ -35,6 +36,7 @@ export class UserDetails implements OnInit {
     const userId = Number(this.route.snapshot.paramMap.get('id'));
 
     this.isLoading = true;
+    this.errorMessage = '';
 
     this.userService.getUserById(userId).subscribe({
       next: (user) => {
@@ -44,6 +46,7 @@ export class UserDetails implements OnInit {
       },
 
       error: () => {
+        this.errorMessage = 'Failed to load user';
         this.isLoading = false;
       },
     });

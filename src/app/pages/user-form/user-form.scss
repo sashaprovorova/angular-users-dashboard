@@ -2,9 +2,15 @@
   padding: 2rem;
   margin: 0 auto;
   max-width: 48rem;
+  width: 100%;
 
   .ant-form-item-label {
     width: 8rem;
     text-align: left;
+  }
+
+  &__error {
+    color: #ff4d4f;
+    margin-bottom: 1rem;
   }
 }

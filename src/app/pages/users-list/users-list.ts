@@ -6,16 +6,18 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzModalModule, NzModalService } from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'app-users-list',
-  imports: [NzTableModule, FormsModule, NzInputModule, NzButtonModule],
+  imports: [NzTableModule, FormsModule, NzInputModule, NzButtonModule, NzModalModule],
   templateUrl: './users-list.html',
   styleUrl: './users-list.scss',
 })
 export class UsersList implements OnInit {
   private userService = inject(UserService);
   private router = inject(Router);
+  private modal = inject(NzModalService);
 
   users: User[] = [];
   isLoading = false;
@@ -35,10 +37,19 @@ export class UsersList implements OnInit {
     this.router.navigate(['/users/new']);
   }
 
-  deleteUser(id: number): void {
-    this.userService.deleteUser(id).subscribe({
-      next: () => {
-        this.users = this.users.filter((user) => user.id !== id);
+  confirmDeleteUser(id: number): void {
+    this.modal.confirm({
+      nzTitle: 'Delete user?',
+      nzContent: 'This action cannot be undone.',
+      nzOkText: 'Delete',
+      nzOkDanger: true,
+      nzCancelText: 'Cancel',
+      nzOnOk: () => {
+        this.userService.deleteUser(id).subscribe({
+          next: () => {
+            this.users = this.users.filter((user) => user.id !== id);
+          },
+        });
       },
     });
   }
