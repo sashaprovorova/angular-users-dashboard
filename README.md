@@ -1,59 +1,101 @@
-# AngularUsersDashboard
+# Angular Users Dashboard
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.26.
+Тестовое Angular-приложение для работы с пользователями через API JSONPlaceholder.
 
-## Development server
+## Функциональность
 
-To start a local development server, run:
+### Пользователи
 
-```bash
-ng serve
+- Просмотр списка пользователей
+- Переход на страницу пользователя
+- Создание пользователя
+- Редактирование пользователя
+- Удаление пользователя
+- Поиск пользователей по имени или email
+- Пагинация таблицы
+
+### Формы
+
+- Reactive Forms
+- Валидация обязательных полей
+- Валидация email
+
+### UI/UX
+
+- NG-ZORRO UI Kit
+- Адаптивный интерфейс
+- Loading/error состояния
+- Confirm modal при удалении
+
+---
+
+## Стек
+
+- Angular 20
+- TypeScript
+- SCSS
+- Angular Router
+- Angular Reactive Forms
+- Angular HttpClient
+- NG-ZORRO
+
+---
+
+## API
+
+Используется:
+
+```txt
+https://jsonplaceholder.typicode.com/users
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Важно
 
-## Code scaffolding
+JSONPlaceholder является mock API.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Методы:
 
-```bash
-ng generate component component-name
+- POST
+- PUT
+- DELETE
+
+возвращают успешный ответ, но изменения не сохраняются после перезагрузки страницы.
+
+## Установка и запуск
+
+Установка зависимостей
+
+```
+npm install
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Запуск проекта
 
-```bash
-ng generate --help
+```
+npm start
 ```
 
-## Building
+Production build
 
-To build the project run:
-
-```bash
-ng build
+```
+npm run build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Маршруты
 
-## Running unit tests
+- /users — список пользователей
+- /users/:id — детали пользователя
+- /users/new — создание пользователя
+- /users/:id/edit — редактирование пользователя
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## Деплой
 
-```bash
-ng test
-```
+Проект задеплоен на Netlify:
 
-## Running end-to-end tests
+[ДЕМО](https://quick-dashboard-angular.netlify.app)
 
-For end-to-end (e2e) testing, run:
+## GitHub
 
-```bash
-ng e2e
-```
+Репозиторий:
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+[GITHUB](https://github.com/sashaprovorova/angular-users-dashboard)
